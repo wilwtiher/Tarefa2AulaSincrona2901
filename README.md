@@ -1,6 +1,6 @@
 # Aluno: Wilton Lacerda Silva Júnior
 ## Grupo 6 Subgrupo 5
-# Tarefa 1: Semáforo com Temporizador Repetitivo.
+# Atividade 1: Semáforo com Temporizador Repetitivo.
 
 Este projeto implementa um semáforo utilizando o SDK do Raspberry Pi Pico e a placa BitDogLab. Através de um temporizador repetitivo (função `add_repeating_timer_ms()`), os LEDs são alternados a cada 3 segundos, de maneira funcional de um semáforo. Enquanto isso, o loop principal imprime uma mensagem a cada 1 segundo na saída serial.
 
