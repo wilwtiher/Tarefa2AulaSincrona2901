@@ -7,10 +7,6 @@
 #define LED_PIN_YELLOW 12
 #define LED_PIN_GREEN  13
 
-// Variavel para armazenar o estado de cada led.
-bool Estado_RED = false;
-bool Estado_YELLOW = false;
-bool Estado_GREEN = false;
 // Enum para identificar os estados do semáforo
 typedef enum {
     ESTADO_RED,
@@ -25,24 +21,24 @@ semaforo_state_t current_state = ESTADO_RED;
 bool repeating_timer_callback(struct repeating_timer *t) {
     // Troca o estado do semáforo e atualiza os LEDs
     switch(current_state) {
-        case ESTADO_RED:
+        case ESTADO_GREEN:
             // Acende o LED vermelho e apaga os demais
             gpio_put(LED_PIN_RED, 1);
             gpio_put(LED_PIN_YELLOW, 0);
+            gpio_put(LED_PIN_GREEN, 0);
+            current_state = ESTADO_RED;
+            break;
+        case ESTADO_RED:
+            gpio_put(LED_PIN_RED, 0);
+            gpio_put(LED_PIN_YELLOW, 1);
             gpio_put(LED_PIN_GREEN, 0);
             current_state = ESTADO_YELLOW;
             break;
         case ESTADO_YELLOW:
             gpio_put(LED_PIN_RED, 0);
-            gpio_put(LED_PIN_YELLOW, 1);
-            gpio_put(LED_PIN_GREEN, 0);
-            current_state = ESTADO_GREEN;
-            break;
-        case ESTADO_GREEN:
-            gpio_put(LED_PIN_RED, 0);
             gpio_put(LED_PIN_YELLOW, 0);
             gpio_put(LED_PIN_GREEN, 1);
-            current_state = ESTADO_RED;
+            current_state = ESTADO_GREEN;
             break;
     }
     printf("Mudança de estado do semAforo\n");
@@ -66,7 +62,7 @@ int main() {
     gpio_put(LED_PIN_RED, 1);
     gpio_put(LED_PIN_YELLOW, 0);
     gpio_put(LED_PIN_GREEN, 0);
-    current_state = ESTADO_YELLOW;
+    current_state = ESTADO_RED;
 
     // Configura o temporizador para chamar a callback a cada 3000 ms (3 segundos)
     struct repeating_timer timer;
