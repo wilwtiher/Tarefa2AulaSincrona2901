@@ -63,10 +63,10 @@ int main() {
     gpio_set_dir(LED_PIN_GREEN, GPIO_OUT);
     
     // Começa o programa com o led verde ligado
-    gpio_put(LED_PIN_RED, 0);
+    gpio_put(LED_PIN_RED, 1);
     gpio_put(LED_PIN_YELLOW, 0);
-    gpio_put(LED_PIN_GREEN, 1);
-    current_state = ESTADO_RED;
+    gpio_put(LED_PIN_GREEN, 0);
+    current_state = ESTADO_YELLOW;
 
     // Configura o temporizador para chamar a callback a cada 3000 ms (3 segundos)
     struct repeating_timer timer;
