@@ -41,7 +41,7 @@ bool repeating_timer_callback(struct repeating_timer *t) {
             current_state = ESTADO_GREEN;
             break;
     }
-    printf("Mudança de estado do semAforo\n");
+    printf("Mudança de estado do semaforo\n");
     // Retorna true para que o temporizador continue repetindo
     return true;
 }
