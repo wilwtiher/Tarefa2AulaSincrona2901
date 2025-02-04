@@ -70,7 +70,7 @@ int main() {
     
     // Loop principal: imprime uma mensagem a cada 1 segundo
     while (true) {
-        printf("Mensagem do loop principal (a cada 1 segundo)\n");
+        printf("Mensagem do loop principal (a cada 1 segundo).\n");
         sleep_ms(1000);
     }
     
